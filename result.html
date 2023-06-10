@@ -1,0 +1,48 @@
+<!-- result.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Avenger Quiz - Result</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .avenger {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .avenger-info {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .avenger-info img {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h1>Avenger Quiz - Result</h1>
+
+        {% for avenger in avengers %}
+            <div class="avenger-info">
+                <img src="{{ url_for('static', filename='images/' + avenger.lower().replace(' ', '') + '.jpg') }}" alt="{{ avenger }}" />
+                <h2>{{ avenger }}</h2>
+            </div>
+        {% endfor %}
+
+        <h2>You are: {{ avengers[0] }}</h2>
+    </div>
+</body>
+</html>
