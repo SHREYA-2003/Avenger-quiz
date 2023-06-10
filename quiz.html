@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Avenger Quiz</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Avenger Quiz</h1>
+        <form method="POST" action="/">
+            {% for question in questions %}
+                <div class="question-container">
+                    <h2>{{ question['question'] }}</h2>
+                    <ul class="choices">
+                        {% for choice in question['choices'] %}
+                            <li>
+                                <input type="radio" name="{{ question['question'] }}" value="{{ choice }}" id="{{ choice }}">
+                                <label for="{{ choice }}">{{ choice }}</label>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
